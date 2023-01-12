@@ -36,100 +36,103 @@ print(output)
 # Possible sol algorithm (TOY ONE is enough) 
 # IN PROGRESS 
 
-#algorithm
-#backward induction
+def alg_mat(tree):
+  #algorithm
+  #backward induction
+  output = []
+  for i in range(len(tree)):
+    output = tree[i]
+    #choice wife in the third line
+
+    #choose between FNC and FNN
+    if (output[1][1]>output[2][1]):
+      FN=output[1]
+    else:
+      FN=output[2]
+    print('FN:',FN)
+
+    #choose between CNF and CNN
+    if (output[4][1]>output[5][1]):
+      CN=output[4]
+    else:
+      CN=output[5]
+    print('CN:',CN)
+
+    #choose between NFC and NFN
+    if (output[6][1]>output[7][1]):
+      NF=output[6]
+    else:
+      NF=output[7]
+    print('NF:',NF)
 
 
-#choice wife in the third line
-
-#choose between FNC and FNN
-if (output[0][1][1]>output[0][2][1]):
-  FN=output[0][1]
-else:
-  FN=output[0][2]
-print('FN:',FN)
-
-#choose between CNF and CNN
-if (output[0][4][1]>output[0][5][1]):
-  CN=output[0][4]
-else:
-  CN=output[0][5]
-print('CN:',CN)
-
-#choose between NFC and NFN
-if (output[0][6][1]>output[0][7][1]):
-  NF=output[0][6]
-else:
-  NF=output[0][7]
-print('NF:',NF)
+    #choose between NCF and NCN
+    if (output[8][1]>output[9][1]):
+      NC=output[8]
+    else:
+      NC=output[9]
+    print('NC:',NC)
 
 
-#choose between NCF and NCN
-if (output[0][8][1]>output[0][9][1]):
-  NC=output[0][8]
-else:
-  NC=output[0][9]
-print('NC:',NC)
+    #choose between NNF, NNC and NNN
+    if (output[10][1]>output[11][1]):
+      if (output[10][1]>output[12][1]):
+        NN=output[10]
+      else:
+        NN=output[12]
+    else:
+      if (output[11][1]>output[12][1]):
+        NN=output[11]
+      else:
+        NN=output[12]
+      print('NN:',NN)
+
+      
+    #choice Husband in the second line
+
+    #choose between FCN and FN
+    if (output[0][2]>FN[2]):
+      F=output[0]
+    else:
+      F=FN
+    print('F:',F)
 
 
-#choose between NNF, NNC and NNN
-if (output[0][10][1]>output[0][11][1]):
-  if (output[0][10][1]>output[0][12][1]):
-    NN=output[0][10]
-  else:
-    NN=output[0][12]
-else:
-  if (output[0][11][1]>output[0][12][1]):
-    NN=output[0][11]
-  else:
-    NN=output[0][12]
-  print('NN:',NN)
-
-  
-#choice Husband in the second line
-
-#choose between FCN and FN
-if (output[0][0][2]>FN[2]):
-  F=output[0][0]
-else:
-  F=FN
-print('F:',F)
+    #choose between CFN and CN
+    if (output[3][2]>CN[2]):
+      C=output[3]
+    else:
+      C=CN
+    print('C:',C)
 
 
-#choose between CFN and CN
-if (output[0][3][2]>CN[2]):
-  C=output[0][3]
-else:
-  C=CN
-print('C:',C)
+    #choose between NF, NC and NN
+    if (NF[2]>NC[2]):
+      if(NF[2]>NN[2]):
+        N=NF
+      else:
+        N=NN
+    else:
+      if(NC[2]>NN[2]):
+        N=NC
+      else:
+        N=NN
+    print('N:',N)
 
 
-#choose between NF, NC and NN
-if (NF[2]>NC[2]):
-  if(NF[2]>NN[2]):
-    N=NF
-  else:
-    N=NN
-else:
-  if(NC[2]>NN[2]):
-    N=NC
-  else:
-    N=NN
-print('N:',N)
+    #choice wife in first line and solution
 
+    #coose between F, C and N
+    if(F[1]>C[1]):
+      if(F[1]>N[1]):
+        solution=F
+      else:
+        solution=N
+    else:
+      if(C[1]>N[1]):
+        solution=C
+      else:
+        solution=N
 
-#choice wife in first line and solution
-
-#coose between F, C and N
-if(F[1]>C[1]):
-  if(F[1]>N[1]):
-    solution=F
-  else:
-    solution=N
-else:
-  if(C[1]>N[1]):
-    solution=C
-  else:
-    solution=N
-
-print('Solution: ', solution)
+    print('Solution: ', solution)
+    output = []
